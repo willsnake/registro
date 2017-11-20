@@ -1,0 +1,84 @@
+{
+  "name": "persona",
+  "plural": "personas",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "titulo": {
+      "type": "string",
+      "default": "Dr."
+    },
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "apellido_pa": {
+      "type": "string",
+      "required": true
+    },
+    "apellido_ma": {
+      "type": "string",
+      "required": true
+    },
+    "calle": {
+      "type": "string",
+      "required": true
+    },
+    "no_exterior": {
+      "type": "string",
+      "required": true
+    },
+    "no_interior": {
+      "type": "string"
+    },
+    "colonia": {
+      "type": "string",
+      "required": true
+    },
+    "delegacion": {
+      "type": "string"
+    },
+    "municipio": {
+      "type": "string"
+    },
+    "ciudad": {
+      "type": "string"
+    },
+    "cp": {
+      "type": "string"
+    },
+    "tel_lada": {
+      "type": "string"
+    },
+    "tel_casa": {
+      "type": "string"
+    },
+    "tel_oficina": {
+      "type": "string"
+    },
+    "tel_celular": {
+      "type": "string",
+      "default": "email"
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "rfc": {
+      "type": "string"
+    },
+    "curp": {
+      "type": "string"
+    },
+    "cedula": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

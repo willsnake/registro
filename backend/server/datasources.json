@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "idrMongo": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "registro_idr",
+    "password": "",
+    "name": "idrMongo",
+    "user": "",
+    "connector": "mongodb"
+  }
+}
