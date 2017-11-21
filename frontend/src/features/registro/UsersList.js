@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
-import { Button, Checkbox, Icon, Table } from 'semantic-ui-react';
+import { Table, Dimmer, Loader, Button, Icon } from 'semantic-ui-react';
+
+import { printIDEdit } from './redux/actions';
+
+const { Header, Row, Body, HeaderCell, Cell } = Table;
 
 export class UsersList extends Component {
   static propTypes = {
@@ -11,39 +15,51 @@ export class UsersList extends Component {
     actions: PropTypes.object.isRequired,
   };
 
-  render() {
-    return (
-      <Table compact celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Registration Date</Table.HeaderCell>
-            <Table.HeaderCell>E-mail address</Table.HeaderCell>
-            <Table.HeaderCell>Premium Plan</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+  componentWillMount() {
+    const { fetchUsers } = this.props.actions;
+    fetchUsers();
+  }
 
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>John Lilki</Table.Cell>
-            <Table.Cell>September 14, 2013</Table.Cell>
-            <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
-            <Table.Cell>No</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Jamie Harington</Table.Cell>
-            <Table.Cell>January 11, 2014</Table.Cell>
-            <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
-            <Table.Cell>Yes</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Jill Lewis</Table.Cell>
-            <Table.Cell>May 11, 2014</Table.Cell>
-            <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
-            <Table.Cell>Yes</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>
+  render() {
+    const { users, usersShowLoader } = this.props.registro;
+    const { printIDEdit } = this.props.actions;
+    return (
+      <div>
+        <h1>Lista de Usuarios</h1>
+        <br />
+        <Dimmer active={usersShowLoader}>
+          <Loader size='massive'>Cargando Usuarios</Loader>
+        </Dimmer>
+        <Table celled compact size='large'>
+          <Header fullWidth>
+            <Row>
+              <HeaderCell>Título</HeaderCell>
+              <HeaderCell>Nombre</HeaderCell>
+              <HeaderCell>Apellido Paterno</HeaderCell>
+              <HeaderCell>Apellido Materno</HeaderCell>
+              <HeaderCell>Opciones</HeaderCell>
+            </Row>
+          </Header>
+
+          <Body>
+            {
+              users.length > 0 ?
+              users.map(item =>
+                <Row key={item.id}>
+                  <Cell>{item.titulo}</Cell>
+                  <Cell>{item.nombre}</Cell>
+                  <Cell>{item.apellido_pa}</Cell>
+                  <Cell>{item.apellido_ma}</Cell>
+                  <Cell selectable>
+                    <a href={`/registro/users-edit/${item.id}`}>Editar Usuario</a>
+                  </Cell>
+                </Row>
+              )
+                : <Row><Cell /></Row>
+            }
+          </Body>
+        </Table>
+      </div>
     );
   }
 }
@@ -58,7 +74,7 @@ function mapStateToProps(state) {
 /* istanbul ignore next */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...actions }, dispatch)
+    actions: bindActionCreators({ ...actions, printIDEdit }, dispatch)
   };
 }
 

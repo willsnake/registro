@@ -1,31 +1,31 @@
 import axios from 'axios';
 import {
-  REGISTRO_FETCH_USERS_BEGIN,
-  REGISTRO_FETCH_USERS_SUCCESS,
-  REGISTRO_FETCH_USERS_FAILURE,
-  REGISTRO_FETCH_USERS_DISMISS_ERROR,
+  REGISTRO_FETCH_SINGLE_USER_BEGIN,
+  REGISTRO_FETCH_SINGLE_USER_SUCCESS,
+  REGISTRO_FETCH_SINGLE_USER_FAILURE,
+  REGISTRO_FETCH_SINGLE_USER_DISMISS_ERROR,
 } from './constants';
 
 // Rekit uses redux-thunk for async actions by default: https://github.com/gaearon/redux-thunk
 // If you prefer redux-saga, you can use rekit-plugin-redux-saga: https://github.com/supnate/rekit-plugin-redux-saga
-export function fetchUsers(args = {}) {
+export function fetchSingleUser(args = {}) {
   return (dispatch) => { // optionally you can have getState as the second argument
     dispatch({
-      type: REGISTRO_FETCH_USERS_BEGIN,
+      type: REGISTRO_FETCH_SINGLE_USER_BEGIN,
     });
 
     return new Promise((resolve, reject) => {
-      axios.get('http://localhost:3000/api/personas').then(
+      axios.get(`http://localhost:3000/api/personas/${args.id}`).then(
         (res) => {
           dispatch({
-            type: REGISTRO_FETCH_USERS_SUCCESS,
+            type: REGISTRO_FETCH_SINGLE_USER_SUCCESS,
             data: res.data,
           });
           resolve(res);
         },
         (err) => {
           dispatch({
-            type: REGISTRO_FETCH_USERS_FAILURE,
+            type: REGISTRO_FETCH_SINGLE_USER_FAILURE,
             data: { error: err },
           });
           reject(err);
@@ -39,13 +39,13 @@ export function fetchUsers(args = {}) {
 // If you don't want errors to be saved in Redux store, just ignore this method.
 export function dismissFetchUsersError() {
   return {
-    type: REGISTRO_FETCH_USERS_DISMISS_ERROR,
+    type: REGISTRO_FETCH_SINGLE_USER_DISMISS_ERROR,
   };
 }
 
 export function reducer(state, action) {
   switch (action.type) {
-    case REGISTRO_FETCH_USERS_BEGIN:
+    case REGISTRO_FETCH_SINGLE_USER_BEGIN:
       // Just after a request is sent
       return {
         ...state,
@@ -53,26 +53,26 @@ export function reducer(state, action) {
         fetchUsersError: null,
       };
 
-    case REGISTRO_FETCH_USERS_SUCCESS:
+    case REGISTRO_FETCH_SINGLE_USER_SUCCESS:
       // The request is success
       return {
         ...state,
         fetchUsersPending: false,
         fetchUsersError: null,
-        users: action.data,
-        usersShowLoader: false,
+        userEdit: action.data,
+        usersEditShowLoader: false,
       };
 
-    case REGISTRO_FETCH_USERS_FAILURE:
+    case REGISTRO_FETCH_SINGLE_USER_FAILURE:
       // The request is failed
       return {
         ...state,
         fetchUsersPending: false,
         fetchUsersError: action.data.error,
-        usersShowLoader: false,
+        usersEditShowLoader: false,
       };
 
-    case REGISTRO_FETCH_USERS_DISMISS_ERROR:
+    case REGISTRO_FETCH_SINGLE_USER_DISMISS_ERROR:
       // Dismiss the request failure error
       return {
         ...state,

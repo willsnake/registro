@@ -1,14 +1,22 @@
 import initialState from './initialState';
 import { reducer as fetchUsersReducer } from './fetchUsers';
 import { reducer as addUserReducer } from './addUser';
+import { reducer as editUser } from './editUser';
 import { reducer as setUserData } from './setUserData';
 import { reducer as printID } from './printID';
+import { reducer as printIDEdit } from './printIDEdit';
+import { reducer as fetchSingleUser } from './fetchSingleUser';
+import { reducer as setEditUserData } from './setEditUserData';
 
 const reducers = [
   fetchUsersReducer,
   addUserReducer,
   setUserData,
   printID,
+  printIDEdit,
+  fetchSingleUser,
+  setEditUserData,
+  editUser,
 ];
 
 export default function reducer(state = initialState, action) {
