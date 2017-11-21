@@ -15,7 +15,6 @@ export function editUser(args = {}) {
     });
 
     const { userEdit } = getState().registro;
-    console.log('userEdit', userEdit);
 
     return new Promise((resolve, reject) => {
       axios.put(`http://localhost:3000/api/personas/${userEdit.id}`, userEdit).then(

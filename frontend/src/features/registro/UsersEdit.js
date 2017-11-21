@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 import { Grid, Button, Form, Message } from 'semantic-ui-react';
 
-import { setEditUserData, printIDEdit } from './redux/actions';
+import { setEditUserData, printIDEdit, printDiploma } from './redux/actions';
 
 const { Group, Input, Select } = Form;
 const { Column, Row } = Grid;
@@ -36,16 +36,17 @@ export class AddUser extends Component {
   static propTypes = {
     registro: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
   };
 
   componentWillMount() {
     const { fetchSingleUser } = this.props.actions;
-    const { id } = this.props.match.params;
-    fetchSingleUser({ id: id });
+    const { params } = this.props.match;
+    fetchSingleUser({ id: params.id });
   }
 
   render() {
-    const { setEditUserData, printIDEdit } = this.props.actions;
+    const { setEditUserData, printIDEdit, printDiploma } = this.props.actions;
     const { userEdit } = this.props.registro;
     return (
       <div className="registro-add-user">
@@ -148,6 +149,11 @@ export class AddUser extends Component {
                   onClick={printIDEdit}
                   content='Imprimir Gafete'
                 />
+                <Button
+                  key='3'
+                  onClick={printDiploma}
+                  content='Imprimir Constancia'
+                />
               </Column>
             </Row>
           </Form>
@@ -168,7 +174,7 @@ function mapStateToProps(state) {
 /* istanbul ignore next */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...actions, setEditUserData, printIDEdit }, dispatch)
+    actions: bindActionCreators({ ...actions, setEditUserData, printIDEdit, printDiploma }, dispatch)
   };
 }
 
