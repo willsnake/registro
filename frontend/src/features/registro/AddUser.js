@@ -64,55 +64,11 @@ export class AddUser extends Component {
                 </Group>
               </Column>
             </Row>
-            <h3>Domicilio</h3>
-            <br />
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
-                  <Input label='Calle' placeholder='Calle' name='calle' onChange={setUserData} />
-                  <Input label='Num. Exterior' placeholder='Num. Exterior' name='no_exterior' onChange={setUserData} />
-                  <Input label='Num. Interior' placeholder='Num. Interior' name='no_interior' onChange={setUserData} />
-                  <Input label='Colonia' placeholder='Colonia' name='colonia' onChange={setUserData} />
-                </Group>
-              </Column>
-            </Row>
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
-                  <Input label='Delegación (solo CDMX)' placeholder='Delegación (solo CDMX)' name='delegacion' onChange={setUserData} />
-                  <Input label='Municipio (solo Provincia)' placeholder='Municipio (solo Provincia)' name='municipio' onChange={setUserData} />
-                  <Input label='Ciudad' placeholder='Ciudad' name='ciudad' onChange={setUserData} />
-                  <Input label='Codigo Postal' placeholder='Codigo Postal' name='cp' onChange={setUserData} />
-                </Group>
-              </Column>
-            </Row>
-            <h3>Teléfonos</h3>
-            <br />
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
-                  <Input label='Lada' placeholder='Lada' name='tel_lada' onChange={setUserData} />
-                  <Input label='Tel. Casa' placeholder='Tel. Casa' name='tel_casa' onChange={setUserData} />
-                  <Input label='Tel. Oficina' placeholder='Tel. Oficina' name='tel_oficina' onChange={setUserData} />
-                  <Input label='Tel. Celular' placeholder='Tel. Celular' name='tel_celular' onChange={setUserData} />
-                </Group>
-              </Column>
-            </Row>
             <Row columns={1}>
               <Column>
                 <Group widths='equal'>
                   <Input label='Email' placeholder='Email' name='email' onChange={setUserData} />
-                </Group>
-              </Column>
-            </Row>
-            <h3>Otros Datos</h3>
-            <br />
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
-                  <Input label='RFC' placeholder='RFC' name='rfc' onChange={setUserData} />
-                  <Input label='CURP' placeholder='CURP' name='curp' onChange={setUserData} />
-                  <Input label='Cedula Profesional' placeholder='Cedula Profesional' name='cedula' onChange={setUserData} />
+                  <Input label='Tel. Celular' placeholder='Tel. Celular' name='tel_celular' onChange={setUserData} />
                   <Select label='Categoría' placeholder='Seleccione la categoría' name='categoria' options={categories} onChange={setUserData} />
                 </Group>
               </Column>

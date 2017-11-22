@@ -21,60 +21,19 @@
     },
     "apellido_ma": {
       "type": "string",
-      "required": true
-    },
-    "calle": {
-      "type": "string",
-      "required": true
-    },
-    "no_exterior": {
-      "type": "string",
-      "required": true
-    },
-    "no_interior": {
-      "type": "string"
-    },
-    "colonia": {
-      "type": "string",
-      "required": true
-    },
-    "delegacion": {
-      "type": "string"
-    },
-    "municipio": {
-      "type": "string"
-    },
-    "ciudad": {
-      "type": "string"
-    },
-    "cp": {
-      "type": "string"
-    },
-    "tel_lada": {
-      "type": "string"
-    },
-    "tel_casa": {
-      "type": "string"
-    },
-    "tel_oficina": {
-      "type": "string"
+      "required": false
     },
     "tel_celular": {
       "type": "string",
-      "default": "email"
+      "required": false
     },
     "email": {
       "type": "string",
-      "required": true
+      "required": false
     },
-    "rfc": {
-      "type": "string"
-    },
-    "curp": {
-      "type": "string"
-    },
-    "cedula": {
-      "type": "string"
+    "categoria": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],

@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {
+  SERVER_HOST,
+  SERVER_PORT,
   REGISTRO_FETCH_SINGLE_USER_BEGIN,
   REGISTRO_FETCH_SINGLE_USER_SUCCESS,
   REGISTRO_FETCH_SINGLE_USER_FAILURE,
@@ -15,7 +17,7 @@ export function fetchSingleUser(args = {}) {
     });
 
     return new Promise((resolve, reject) => {
-      axios.get(`http://localhost:3000/api/personas/${args.id}`).then(
+      axios.get(`http://${SERVER_HOST}:${SERVER_PORT}/api/personas/${args.id}`).then(
         (res) => {
           dispatch({
             type: REGISTRO_FETCH_SINGLE_USER_SUCCESS,

@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {
+  SERVER_HOST,
+  SERVER_PORT,
   REGISTRO_EDIT_USER_BEGIN,
   REGISTRO_EDIT_USER_SUCCESS,
   REGISTRO_EDIT_USER_FAILURE,
@@ -17,7 +19,7 @@ export function editUser(args = {}) {
     const { userEdit } = getState().registro;
 
     return new Promise((resolve, reject) => {
-      axios.put(`http://localhost:3000/api/personas/${userEdit.id}`, userEdit).then(
+      axios.put(`http://${SERVER_HOST}:${SERVER_PORT}/api/personas/${userEdit.id}`, userEdit).then(
         (res) => {
           dispatch({
             type: REGISTRO_EDIT_USER_SUCCESS,

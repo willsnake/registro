@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {
+  SERVER_HOST,
+  SERVER_PORT,
   REGISTRO_ADD_USER_BEGIN,
   REGISTRO_ADD_USER_SUCCESS,
   REGISTRO_ADD_USER_FAILURE,
@@ -17,7 +19,7 @@ export function addUser(args = {}) {
     const { user } = getState().registro;
 
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost:3000/api/personas', user).then(
+      axios.post(`http://${SERVER_HOST}:${SERVER_PORT}/api/personas`, user).then(
         (res) => {
           dispatch({
             type: REGISTRO_ADD_USER_SUCCESS,

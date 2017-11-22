@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {
+  SERVER_HOST,
+  SERVER_PORT,
   REGISTRO_FETCH_USERS_BEGIN,
   REGISTRO_FETCH_USERS_SUCCESS,
   REGISTRO_FETCH_USERS_FAILURE,
@@ -14,8 +16,11 @@ export function fetchUsers(args = {}) {
       type: REGISTRO_FETCH_USERS_BEGIN,
     });
 
+    console.log('SERVER_HOST', SERVER_HOST);
+    console.log('SERVER_PORT', SERVER_PORT);
+
     return new Promise((resolve, reject) => {
-      axios.get('http://localhost:3000/api/personas').then(
+      axios.get(`http://${SERVER_HOST}:${SERVER_PORT}/api/personas`).then(
         (res) => {
           dispatch({
             type: REGISTRO_FETCH_USERS_SUCCESS,
