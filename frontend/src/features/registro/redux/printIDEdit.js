@@ -3,7 +3,8 @@ import {
     PRINT_ID_USER_EDIT,
 } from './constants';
 
-export function printIDEdit(args = {}) {
+export function printIDEdit(e) {
+    e.preventDefault();
     return (dispatch, getState) => {
         dispatch({
             type: PRINT_ID_USER_EDIT

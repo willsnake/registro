@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from './redux/actions';
 import { Grid, Button, Form, Message } from 'semantic-ui-react';
-
+import * as actions from './redux/actions';
 import { setEditUserData, printIDEdit, printDiploma } from './redux/actions';
+
 
 const { Group, Input, Select } = Form;
 const { Column, Row } = Grid;
