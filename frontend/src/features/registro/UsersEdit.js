@@ -72,55 +72,11 @@ export class AddUser extends Component {
                 </Group>
               </Column>
             </Row>
-            <h3>Domicilio</h3>
-            <br />
             <Row columns={1}>
               <Column>
                 <Group widths='equal'>
-                  <Input label='Calle' placeholder='Calle' name='calle' onChange={setEditUserData} value={userEdit.calle} />
-                  <Input label='Num. Exterior' placeholder='Num. Exterior' name='no_exterior' onChange={setEditUserData} value={userEdit.no_exterior} />
-                  <Input label='Num. Interior' placeholder='Num. Interior' name='no_interior' onChange={setEditUserData} value={userEdit.no_interior} />
-                  <Input label='Colonia' placeholder='Colonia' name='colonia' onChange={setEditUserData} value={userEdit.colonia} />
-                </Group>
-              </Column>
-            </Row>
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
-                  <Input label='Delegación (solo CDMX)' placeholder='Delegación (solo CDMX)' name='delegacion' onChange={setEditUserData} value={userEdit.delegacion} />
-                  <Input label='Municipio (solo Provincia)' placeholder='Municipio (solo Provincia)' name='municipio' onChange={setEditUserData} value={userEdit.municipio} />
-                  <Input label='Ciudad' placeholder='Ciudad' name='ciudad' onChange={setEditUserData} value={userEdit.ciudad} />
-                  <Input label='Codigo Postal' placeholder='Codigo Postal' name='cp' onChange={setEditUserData} value={userEdit.cp} />
-                </Group>
-              </Column>
-            </Row>
-            <h3>Teléfonos</h3>
-            <br />
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
-                  <Input label='Lada' placeholder='Lada' name='tel_lada' onChange={setEditUserData} value={userEdit.tel_lada} />
-                  <Input label='Tel. Casa' placeholder='Tel. Casa' name='tel_casa' onChange={setEditUserData} value={userEdit.tel_casa} />
-                  <Input label='Tel. Oficina' placeholder='Tel. Oficina' name='tel_oficina' onChange={setEditUserData} value={userEdit.tel_oficina} />
                   <Input label='Tel. Celular' placeholder='Tel. Celular' name='tel_celular' onChange={setEditUserData} value={userEdit.tel_celular} />
-                </Group>
-              </Column>
-            </Row>
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
                   <Input label='Email' placeholder='Email' name='email' onChange={setEditUserData} value={userEdit.email} />
-                </Group>
-              </Column>
-            </Row>
-            <h3>Otros Datos</h3>
-            <br />
-            <Row columns={1}>
-              <Column>
-                <Group widths='equal'>
-                  <Input label='RFC' placeholder='RFC' name='rfc' onChange={setEditUserData} value={userEdit.rfc} />
-                  <Input label='CURP' placeholder='CURP' name='curp' onChange={setEditUserData} value={userEdit.curp} />
-                  <Input label='Cedula Profesional' placeholder='Cedula Profesional' name='cedula' onChange={setEditUserData} value={userEdit.cedula} />
                   <Select label='Categoría' placeholder='Seleccione la categoría' name='categoria' options={categories} onChange={setEditUserData} defaultValue={userEdit.categoria} />
                 </Group>
               </Column>
