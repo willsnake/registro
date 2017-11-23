@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
-import { Table, Dimmer, Loader, Button, Icon } from 'semantic-ui-react';
+import { Table, Dimmer, Loader, Input, Icon } from 'semantic-ui-react';
 
-import { printIDEdit } from './redux/actions';
+import { searchUser } from './redux/actions';
 
 const { Header, Row, Body, HeaderCell, Cell } = Table;
 
@@ -21,8 +21,8 @@ export class UsersList extends Component {
   }
 
   render() {
-    const { users, usersShowLoader } = this.props.registro;
-    const { printIDEdit } = this.props.actions;
+    const { users, usersShowLoader, searchUsersLoader } = this.props.registro;
+    const { searchUser } = this.props.actions;
     return (
       <div>
         <h1>Lista de Usuarios</h1>
@@ -30,13 +30,13 @@ export class UsersList extends Component {
         <Dimmer active={usersShowLoader}>
           <Loader size='massive'>Cargando Usuarios</Loader>
         </Dimmer>
-        <Table celled compact size='large'>
+        <Input placeholder='Buscar Usuario' loading={searchUsersLoader} onChange={searchUser} />
+        <Table celled>
           <Header fullWidth>
             <Row>
               <HeaderCell>Título</HeaderCell>
-              <HeaderCell>Nombre</HeaderCell>
-              <HeaderCell>Apellido Paterno</HeaderCell>
-              <HeaderCell>Apellido Materno</HeaderCell>
+              <HeaderCell width={3}>Nombre</HeaderCell>
+              <HeaderCell>Categoría</HeaderCell>
               <HeaderCell>Opciones</HeaderCell>
             </Row>
           </Header>
@@ -47,9 +47,8 @@ export class UsersList extends Component {
               users.map(item =>
                 <Row key={item.id}>
                   <Cell>{item.titulo}</Cell>
-                  <Cell>{item.nombre}</Cell>
-                  <Cell>{item.apellido_pa}</Cell>
-                  <Cell>{item.apellido_ma}</Cell>
+                  <Cell width={3}>{`${item.nombre} ${item.apellido_pa} ${item.apellido_ma}`}</Cell>
+                  <Cell>{item.categoria}</Cell>
                   <Cell selectable>
                     <a href={`/registro/users-edit/${item.id}`}>Editar Usuario</a>
                   </Cell>
@@ -74,7 +73,7 @@ function mapStateToProps(state) {
 /* istanbul ignore next */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...actions, printIDEdit }, dispatch)
+    actions: bindActionCreators({ ...actions, searchUser }, dispatch)
   };
 }
 

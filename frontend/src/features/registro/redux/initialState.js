@@ -24,6 +24,7 @@ const initialState = {
     titulo: '',
     categoria: '',
   },
+  searchUsersLoader: false,
   users: [],
   editUserPending: false,
   editUserError: null,
@@ -38,7 +39,9 @@ const initialState = {
     tel_celular: '',
     titulo: '',
     categoria: '',
-  }
+  },
+  searchUserPending: false,
+  searchUserError: null,
 };
 
 export default initialState;

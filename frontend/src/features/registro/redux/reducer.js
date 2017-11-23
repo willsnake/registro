@@ -8,6 +8,7 @@ import { reducer as printIDEdit } from './printIDEdit';
 import { reducer as fetchSingleUser } from './fetchSingleUser';
 import { reducer as setEditUserData } from './setEditUserData';
 import { reducer as printDiploma } from './printDiploma';
+import { reducer as searchUserReducer } from './searchUser';
 
 const reducers = [
   fetchUsersReducer,
@@ -19,6 +20,7 @@ const reducers = [
   setEditUserData,
   editUser,
   printDiploma,
+  searchUserReducer,
 ];
 
 export default function reducer(state = initialState, action) {
