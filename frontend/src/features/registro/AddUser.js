@@ -11,6 +11,21 @@ const { Group, Input, Select } = Form;
 const { Column, Row } = Grid;
 const categories = [
   {
+    key: 'ACOMPAÑANTE',
+    value: 'ACOMPAÑANTE',
+    text: 'ACOMPAÑANTE'
+  },
+  {
+    key: 'PROFESOR',
+    value: 'PROFESOR',
+    text: 'PROFESOR'
+  },
+  {
+    key: 'PONENTE',
+    value: 'PONENTE',
+    text: 'PONENTE'
+  },
+  {
     key: 'ASISTENTE',
     value: 'ASISTENTE',
     text: 'ASISTENTE'
